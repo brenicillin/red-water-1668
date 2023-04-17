@@ -7,25 +7,25 @@ RSpec.describe 'Chef Show Page' do
 
   describe 'User Story 3' do
     it 'shows a link to view chef ingredient index' do
-      visit '/chefs/1'
+      visit "/chefs/#{@brandon.id}"
 
       within "#chef_ingredients" do
-        expect(page).to have_link("View All Ingredients")
+        expect(page).to have_link("View All Ingredients Used By #{@brandon.name}")
       end
     end
 
     it 'takes me to chef ingredient index' do
-      visit '/chefs/1'
+      visit "/chefs/#{@brandon.id}"
 
       within "#chef_ingredients" do
-        click_link "View All Ingredients"
+        click_link "View All Ingredients Used By #{@brandon.name}"
       end
 
-      expect(current_path).to eq('/chefs/1/ingredients')
+      expect(current_path).to eq("/chefs/#{@brandon.id}/ingredients")
     end
 
     it 'shows a unique list of all ingredients that chef uses' do
-      visit '/chefs/1/ingredients'
+      visit "/chefs/#{@brandon.id}/ingredients"
 
       expect(page).to have_content("Chicken Breast")
       expect(page).to have_content("Macaroni Noodles")
@@ -37,14 +37,14 @@ RSpec.describe 'Chef Show Page' do
       expect(page).to_not have_content("Lettuce")
       expect(page).to_not have_content("Guy Sauce")
 
-      visit '/chefs/2/ingredients'
+      visit "/chefs/#{@guy.id}/ingredients"
 
       expect(page).to have_content("Ground Beef")
       expect(page).to have_content("Bun")
       expect(page).to have_content("Tomato")
       expect(page).to have_content("Lettuce")
       expect(page).to have_content("Guy Sauce")
-      expect(page).to_not have_content("Chicken Breast")
+      expect(page).to have_content("Chicken Breast")
       expect(page).to_not have_content("Macaroni Noodles")
       expect(page).to_not have_content("Cheese")
       expect(page).to_not have_content("Buffalo Sauce")

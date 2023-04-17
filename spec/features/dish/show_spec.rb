@@ -7,7 +7,7 @@ RSpec.describe 'Dish Show Page' do
 
   describe 'User Story 1' do
     it "can see the dish's name and description" do
-      visit '/dishes/1'
+      visit "/dishes/#{@buffalo_mac.id}"
 
       within "#header" do
         expect(page).to have_content("Buffalo Mac and Cheese")
