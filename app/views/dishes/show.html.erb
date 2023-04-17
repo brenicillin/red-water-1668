@@ -15,6 +15,15 @@
   </ul>
 </section>
 
+<section id="add_ingredient">
+<h2>Add an Ingredient</h2>
+  <%= form_with url: "/dishes/#{@dish.id}", method: :post do |f| %>
+    <%= f.label :ingredient_id %>
+    <%= f.text_field :ingredient_id %>
+    <%= f.submit "Add Ingredient" %>
+  <% end %>
+</section>
+
 <section id="prepared_by">
   <h2>Prepared By</h2>
   Chef: <%= @dish.chef_name %>
