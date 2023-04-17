@@ -29,4 +29,30 @@ RSpec.describe 'Dish Show Page' do
       end
     end
   end
+
+  describe 'User Story 2' do
+    it "see a form to add an ingredient to the dish" do
+      visit '/dishes/1'
+
+      within "#add_ingredient" do
+        expect(page).to have_content("Add an Ingredient")
+        expect(page).to have_button("Add Ingredient")
+      end
+    end
+
+    it 'functionality to add an ingredient to the dish' do
+      visit '/dishes/1'
+      
+      within "#add_ingredient" do
+        fill_in ":ingredient_id", with: @sriracha.id
+        click_button "Add Ingredient"
+      end
+
+      expect(current_path).to eq('/dishes/1')
+      
+      within "#dish_ingredients" do
+        expect(page).to have_content("Sriracha")
+      end
+    end
+  end
 end
