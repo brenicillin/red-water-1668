@@ -3,3 +3,12 @@
 <section id="chef_ingredients">
 <%= link_to "View All Ingredients Used By #{@chef.name}", chef_ingredients_path(@chef) %>
 </section>
+
+<section id="top_3_ingredients">
+  <ol>
+    <h2>Top 3 Most Popular Ingredients</h2>
+    <% @chef.top_3_ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ol>
+</section>
