@@ -5,3 +5,17 @@
   <p>Description: <%= @dish.description %></p>
   <p>Total Calories: <%= @dish.total_calories %></p>
 </section>  
+
+<section id="dish_ingredients">
+  <h2>Ingredients</h2>
+  <ul>
+    <% @dish.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+</section>
+
+<section id="prepared_by">
+  <h2>Prepared By</h2>
+  Chef: <%= @dish.chef.name %>
+</section>
