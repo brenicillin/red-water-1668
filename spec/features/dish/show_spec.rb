@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Dish Show Page' do
+  before(:all) do
+    test_data
+  end
+
   describe 'User Story 1' do
     it "can see the dish's name and description" do
       visit '/dishes/1'
-
-      within "#dish_info" do
+      
+      within "#header" do
         expect(page).to have_content("Buffalo Mac and Cheese")
+      end
+      within "#dish_info" do
         expect(page).to have_content("Chicken Breast tossed in Buffalo Sauce, smothered in cheese with macaroni noodles")
         expect(page).to have_content("Total Calories: 1000")
       end
