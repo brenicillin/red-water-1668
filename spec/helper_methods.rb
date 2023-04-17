@@ -9,5 +9,4 @@ def test_data
   @buffalo_mac.ingredients << @buffalo
   @buffalo_mac.ingredients << @mac
   @buffalo_mac.ingredients << @cheese
-  require 'pry'; binding.pry
 end
