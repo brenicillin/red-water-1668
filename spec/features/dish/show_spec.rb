@@ -44,12 +44,12 @@ RSpec.describe 'Dish Show Page' do
       visit '/dishes/1'
       
       within "#add_ingredient" do
-        fill_in ":ingredient_id", with: @sriracha.id
+        fill_in "ingredient_id", with: @sriracha.id
         click_button "Add Ingredient"
       end
 
       expect(current_path).to eq('/dishes/1')
-      
+
       within "#dish_ingredients" do
         expect(page).to have_content("Sriracha")
       end
