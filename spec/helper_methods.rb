@@ -5,8 +5,9 @@ def test_data
   @guy_burger = @guy.dishes.create!(name: "Guy Burger", description: "Burger with Guy's secret sauce")
   @buffalo_mac = @brandon.dishes.create!(name: "Buffalo Mac and Cheese", description: "Chicken Breast tossed in Buffalo Sauce, smothered in cheese with macaroni noodles")
   @chicken_sando = @guy.dishes.create!(name: "Chicken Sandwich", description: "Chicken Breast with Guy's secret sauce")
+  @burger_mac = @brandon.dishes.create!(name: "Cheeseburger Mac and Cheese", description: "Ground beef and macaroni noodles smothered in cheese")
 
-  @beef = Ingredient.create!(name: "Ground Beef Patty", calories: 500)
+  @beef = Ingredient.create!(name: "Ground Beef", calories: 500)
   @bun = Ingredient.create!(name: "Bun", calories: 200)
   @guy_sauce = Ingredient.create!(name: "Guy Sauce", calories: 100)
   @tomato = Ingredient.create!(name: "Tomato", calories: 50)
@@ -33,4 +34,8 @@ def test_data
   @buffalo_mac.ingredients << @buffalo
   @buffalo_mac.ingredients << @mac
   @buffalo_mac.ingredients << @cheese
+
+  @burger_mac.ingredients << @beef
+  @burger_mac.ingredients << @mac
+  @burger_mac.ingredients << @cheese
 end
